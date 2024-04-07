@@ -25,9 +25,8 @@
 #include <csmeta.h>
 
 QMetaClassInfo::QMetaClassInfo(const QString &name, const QString &value)
+  : m_name(name), m_value(value)
 {
-   m_name  = name;
-   m_value = value;
 }
 
 const QString &QMetaClassInfo::name() const

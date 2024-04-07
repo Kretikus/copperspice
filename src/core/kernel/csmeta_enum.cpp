@@ -35,10 +35,8 @@ QMetaEnum::QMetaEnum(const QString &name, const QString &scope, bool isFlag)
 }
 
 QMetaEnum::QMetaEnum()
+: m_flag(false)
 {
-   m_name  = QString();
-   m_scope = QString();
-   m_flag  = false;
 }
 
 bool QMetaEnum::isFlag() const
