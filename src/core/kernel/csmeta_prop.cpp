@@ -29,25 +29,12 @@
 
 QMetaProperty::QMetaProperty(const QString &name, QMetaObject *obj)
    :  m_metaObject(obj), m_name(name),
-      m_returnTypeId(typeid(void)), m_returnTypeFuncPtr(nullptr)
+      m_returnTypeId(typeid(void)), m_returnTypeFuncPtr(nullptr),
+      m_read_able(false), m_write_able(false), m_reset_able(false),
+      m_notify_able(false), m_revision(0), m_constant(false), m_final(false),
+      m_readJar(nullptr), m_designJar(nullptr), m_scriptJar(nullptr), m_storedJar(nullptr),
+      m_userJar(nullptr), m_writeJar(nullptr), m_resetJar(nullptr), m_notifyBento(nullptr)
 {
-   m_typeName        = QString();
-   m_writeMethodName = QString();
-
-   m_read_able    = false;
-   m_write_able   = false;
-   m_reset_able   = false;
-   m_notify_able  = false;
-
-   m_constant     = false;
-   m_final        = false;
-   m_revision     = 0;
-
-   m_designJar    = nullptr;
-   m_scriptJar    = nullptr;
-   m_storedJar    = nullptr;
-   m_userJar      = nullptr;
-
    // register enums
    Qt::staticMetaObject();
 }

@@ -30,27 +30,15 @@
 QMetaMethod::QMetaMethod(const QString &typeName, const QString &signature, std::vector<QString> paramNames,
       QMetaMethod::Access access, QMetaMethod::MethodType methodType,
       QMetaMethod::Attributes attributes, QMetaObject *obj)
-   : m_typeName(typeName), m_signature(signature), m_paramNames(paramNames.begin(), paramNames.end()),
-     m_access(access), m_methodType(methodType), m_attributes(attributes), m_metaObject(obj)
+   : m_revision(0), m_typeName(typeName), m_signature(signature), m_paramNames(paramNames.begin(), paramNames.end()),
+     m_access(access), m_methodType(methodType), m_attributes(attributes), m_metaObject(obj), m_bento(nullptr)
 {
-   m_bento     = nullptr;
-   m_tag       = QString();
-   m_revision  = 0;
 }
 
 QMetaMethod::QMetaMethod()
+: m_revision(0), m_access(QMetaMethod::Private), m_methodType(QMetaMethod::Method), m_attributes(Attributes(0)),
+  m_metaObject(nullptr), m_bento(nullptr)
 {
-   m_typeName   = QString();
-   // m_signature
-   // m_paramNames
-   m_access     = Private;
-   m_methodType = Method;
-   m_attributes = Attributes(0);
-   m_metaObject = nullptr;
-
-   m_bento      = nullptr;
-   m_tag        = QString();
-   m_revision   = 0;
 }
 
 QMetaMethod::Access QMetaMethod::access() const
